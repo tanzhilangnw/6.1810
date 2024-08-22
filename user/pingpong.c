@@ -14,9 +14,7 @@ int main(){
     	   fprintf(1,"parent can't write to pipe\n");
     	   exit(1);
     	}
-    	//else{
-    	//   printf("parent write to pipe\n");
-    	//}
+
     	close(p[1]);
     	
     	wait(0);
@@ -34,7 +32,7 @@ int main(){
     }else if(fork()==0){//child
         if(read(p[0],buf,1)!=1){
     	   fprintf(1,"child can't read from pipe\n");	
-a    	   exit(1);	
+    	   exit(1);	
     	}
     	printf("%d: received ping:%c\n",getpid(),buf[0]);
     	printf("%d: received ping\n",getpid());
@@ -44,9 +42,7 @@ a    	   exit(1);
     	   fprintf(1,"child can't write to pipe\n");
     	   exit(1);
     	}
-    	//else{
-    	  // printf("child write to pipe\n");
-    	//}
+
     	close(p[1]);
     	
     	exit(0);
