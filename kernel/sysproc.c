@@ -91,3 +91,15 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// trace which syscall be called
+// accroding to the mask
+uint64
+sys_trace(void)
+{
+  int mask;
+  argint(0,&mask);
+  myproc()->trace_mask = mask;
+  return 0;
+}
+
